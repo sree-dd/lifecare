@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Registration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<div id="home" class="parallax first-section wow fadeIn" data-stellar-background-ratio="0.4" style="background-image:url('/static/images/loginimg.png');">
+<div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                         <li><a href="/" class="smoothScroll">Home</a></li>
+
+
+                    </ul>
+               </div>
+<body>
+<div class="container">
+<form action="register" method="POST">
+    {% csrf_token %}
+      <div id="home1" class="parallax first-section wow fadeIn" data-stellar-background-ratio="0.4" style="background-image:url('/static/images/loginimg.png');">
+    <h1>Registration</h1>
+      <hr>
+         <label><b>User Name</b></label><br>
+         <input type="text" placeholder="Enter UserName" name="username" required><br>
+
+         <label><b>FirstName</b></label><br>
+         <input type="text" placeholder="Enter First Name" name="first_name" required><br>
+
+        <label><b>Last Name</b></label><br>
+        <input type="text" placeholder="Enter LastName" name="last_name" required><br>
+
+        <label><b>Email</b></label><br>
+        <input type="text" placeholder="Enter Email" name="email"required><br>
+
+        <label><b>Password</b></label><br>
+        <input type="password" placeholder="Enter Password" name="password"required><br>
+
+        <label><b>Repeat Password</b></label><br>
+        <input type="password" placeholder="Repeat Password" name="cpassword"required><br>
+    <hr>
+    <button type="submit" class="registerbtn">Register</button>
+      <div class="text-center">
+    <div class="d-flex justify-content-center links">
+        Already have an account?<a href="{% url 'login' %}">Login</a>
+
+    </div>
+</div>
+  </div>
+</form>
+
+{% for msg in messages %}
+<h1>{{msg}}</h1>
+{% endfor %}
+</div>
+</body>
+</html>
